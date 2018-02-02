@@ -20,3 +20,17 @@ clonedir/
 .Rhistory
 *.Rout*
 *.wrapR.*
+up.time
+commit.time
+commit.default
+dotdir/
+clonedir/
+*.hup
+*.oldfile
+*.olddiff
+*.RData
+*.Rlog
+*.r
+.Rhistory
+*.Rout*
+*.wrapR.*
