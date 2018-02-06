@@ -19,7 +19,6 @@ clonedir/
 *.olddiff
 *.RData
 *.Rlog
-*.r
 .Rhistory
 *.Rout*
 *.wrapR.*
@@ -33,7 +32,6 @@ clonedir/
 *.olddiff
 *.RData
 *.Rlog
-*.r
 .Rhistory
 *.Rout*
 *.wrapR.*
