@@ -15,5 +15,3 @@ genSamp <- function(lat, inf, nsamp=100){
 
 	return(runif(nsamp, min=lat, max=lat+inf))
 }
-
-
