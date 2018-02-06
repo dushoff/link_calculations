@@ -1,5 +1,5 @@
 source("euler.R")
-source("functions.R")
+source("quantile.R")
 
 xmax <- 2
 ymax <- 5
