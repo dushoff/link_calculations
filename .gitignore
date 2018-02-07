@@ -6,6 +6,11 @@ make.log
 .gitignore 
 
 ## content from makestuff
+rdata_2002_2007.csv
+ebola.pdf
+rabies.pdf
+genExp.pdf
+steps.pdf
 up.time
 commit.time
 commit.default
