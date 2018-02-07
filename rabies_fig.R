@@ -2,6 +2,10 @@ library(bbmle)
 source("euler.R")
 source("quantile.R")
 source("functions.R")
+source("mle.R")
+
+## Points corresponding to WHO estimates
+Reff <- c(1.06, 1.32)
 
 rdata <- read.csv("rdata_2002_2007.csv")
 lat <- with(rdata, {data.frame(
@@ -33,14 +37,11 @@ lat <- lat$val[!is.na(lat$val)]
 set.seed(101)
 gen <- genSamp(lat, inf, nsamp=length(lat))
 
-## Points corresponding to WHO estimates
-Reff <- c(1.06, 1.32)
 rho_eff <- findrho(gen, Reff)
-
 mle <- gammaMLE(gen)
 
 ## draw r-R curve
-pdf("rabies.pdf", width=8, heigh=6) 
+pdf("rabies.pdf", width=8, height=6) 
 par(mfrow=c(1,2))
 GenCurve(gen, xmax, ymax, rho_eff, Reff, lwd=2)
 curve(GammaCurve(1/mle[1], x), add=TRUE, lwd=2, col="blue", lty=2)

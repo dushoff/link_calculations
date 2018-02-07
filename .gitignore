@@ -1,6 +1,3 @@
-## content for rabies
-rdata_2002_2007.csv
-
 ## Content from .ignore
 local.mk
 target.mk
@@ -19,20 +16,7 @@ clonedir/
 *.olddiff
 *.RData
 *.Rlog
+*.r
 .Rhistory
 *.Rout*
 *.wrapR.*
-up.time
-commit.time
-commit.default
-dotdir/
-clonedir/
-*.hup
-*.oldfile
-*.olddiff
-*.RData
-*.Rlog
-.Rhistory
-*.Rout*
-*.wrapR.*
-.Rproj.user
