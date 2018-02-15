@@ -3,6 +3,7 @@ source("euler.R")
 source("quantile.R")
 source("functions.R")
 source("mle.R")
+source("colors.R")
 
 ## Points corresponding to WHO estimates
 Reff <- c(1.06, 1.32)
@@ -44,14 +45,14 @@ mle <- gammaMLE(gen)
 pdf("rabies.pdf", width=8, height=6) 
 par(mfrow=c(1,2))
 GenCurve(gen, xmax, ymax, rho_eff, Reff, lwd=2)
-curve(GammaCurve(1/mle[1], x), add=TRUE, lwd=2, col="blue", lty=2)
+curve(GammaCurve(1/mle[1], x), add=TRUE, lwd=2, col=mlecolor, lty=2)
 legend(
 	"topleft"
 	, legend=c("empirical", "moment", "MLE")
 	, lty=c(1, 1, 2)
 	, lwd=2
 	, seg.len=4
-	, col=c("black", "blue", "blue")
+	, col=c("black", momcolor, mlecolor)
 )
 
 hist(gen
@@ -64,12 +65,12 @@ hist(gen
 )
 curve(dgamma(x, shape=mean(gen)^2/var(gen), scale=var(gen)/mean(gen))
 	, add=TRUE
-	, col="blue"
+	, col=momcolor
 	, lwd=2
 )
 curve(dgamma(x, shape=mle[1], scale=mle[2])
 	, add=TRUE
-	, col="blue"
+	, col=mlecolor
 	, lty=2
 	, lwd=2
 )

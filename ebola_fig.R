@@ -1,6 +1,7 @@
 library(bbmle)
 library(tidyr)
 library(dplyr)
+
 library(ggplot2); theme_set(theme_bw())
 
 ## Points corresponding to WHO estimates
@@ -16,6 +17,7 @@ numSamps <- 10000
 
 source("euler.R")
 source("quantile.R")
+source("mle.R")
 
 xmax <- 2
 ymax <- 5

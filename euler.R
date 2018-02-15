@@ -37,12 +37,12 @@ GenCurve <- function(gen, xmax, ymax,
 	# Version with extra curves
 	# Blue is the approximations
 	baseplot()
-	lines(rho, GammaCurve(1/gamshape, rho), col="blue", lwd=lwd)
+	lines(rho, GammaCurve(1/gamshape, rho), col=momcolor, lwd=lwd)
 	
 	pp <- c(19, 17, 15)
 	
 	points(rho_eff, Reff, pch=pp[1:length(Reff)])
-	curve(1+x, add=TRUE, col="blue", lty=3, lwd=lwd)
-	curve(exp(x), add=TRUE, col="blue", lty=3, lwd=lwd)
+	curve(1+x, add=TRUE, col=limcolor, lty=3, lwd=lwd)
+	curve(exp(x), add=TRUE, col=limcolor, lty=3, lwd=lwd)
 	invisible()
 }
