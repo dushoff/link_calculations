@@ -37,7 +37,7 @@ GenCurve <- function(gen, xmax, ymax,
 	# Version with extra curves
 	# Blue is the approximations
 	baseplot()
-	lines(rho, GammaCurve(1/gamshape, rho), col=momcolor, lwd=lwd)
+	lines(rho, GammaCurve(1/gamshape, rho), col=momcolor, lwd=lwd, lty=2)
 	
 	pp <- c(19, 17, 15)
 	
@@ -45,4 +45,20 @@ GenCurve <- function(gen, xmax, ymax,
 	curve(1+x, add=TRUE, col=limcolor, lty=3, lwd=lwd)
 	curve(exp(x), add=TRUE, col=limcolor, lty=3, lwd=lwd)
 	invisible()
+}
+
+NormalCurve <- function(gen, xmax, ymax,
+						rho_eff,
+						Reff,
+						lwd=1) {
+	nQuant <- 10000
+	q <- (2*(1:nQuant)-1)/(2*nQuant)
+	gbar <- mean(gen)
+	normgen <- qnorm(q, mean = gbar, sd = sd(gen))
+	
+	GenCurve(gen, xmax, ymax, rho_eff, Reff, lwd)
+	
+	rho <- seq(0, xmax, by=0.1)
+	
+	lines(rho, EulerCurve(gbar/rho, normgen), col=norcolor, lty=2, lwd=lwd)
 }

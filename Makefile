@@ -32,10 +32,10 @@ rdata_2002_2007.csv:
 
 ######################################################################
 
-colors.R:
+colors.R: colors.R
 
 ## Daniel-style sourcing (fake step rules)
-ebola_fig.R: euler.R quantile.R mle.R
+ebola_fig.R: colors.R euler.R quantile.R mle.R
 ebola_fig.Rout: ebola_fig.R
 ebola.pdf: ebola_fig.Rout ;
 Ignore += ebola.pdf
