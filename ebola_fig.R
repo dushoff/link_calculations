@@ -57,7 +57,7 @@ legend(
 dev.off()
 
 nsamp <- 50
-nrep <- 500
+nrep <- 1000
 
 samp_list <- replicate(nrep, {
 	s <- sample(gen, nsamp)
@@ -87,7 +87,7 @@ samp_df <- samp_list %>%
 
 ggebola <- (
 	ggplot(samp_df, aes(x=rho))
-	+ geom_ribbon(aes(ymin=lwr, ymax=upr, group=key, col=key, fill=key), alpha=0.2, lwd=1, color=FALSE)
+	+ geom_ribbon(aes(ymin=lwr, ymax=upr, group=key, col=key, fill=key), alpha=0.2, lwd=1, lty=2)
 	+ geom_line(aes(y=mean, group=key, col=key), lwd=1, lty=2)
 	+ scale_color_manual(values=c(momcolor, mlecolor))
 	+ scale_fill_manual(values=c(momcolor, mlecolor))
