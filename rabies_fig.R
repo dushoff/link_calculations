@@ -1,4 +1,9 @@
 library(bbmle)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+theme_set(theme_bw())
+
 source("euler.R")
 source("quantile.R")
 source("functions.R")
