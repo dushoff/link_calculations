@@ -49,6 +49,7 @@ Ignore += rabies.pdf rabies_sample.pdf
 measles_fig.R: colors.R euler.R quantile.R functions.R
 measles_fig.Rout: measles_fig.R
 measles.pdf: measles_fig.Rout ;
+Ignore += measles.pdf
 
 ## X figure
 genExp.R: euler.R
