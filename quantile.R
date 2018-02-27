@@ -1,7 +1,19 @@
 lnquantiles <- function(mean, sdlog, nQuant=1000){
 	q <- (2*(1:nQuant)-1)/(2*nQuant)
-	lat <- qlnorm(q, sdlog=sdlog)
-	return(lat*mean/mean(lat))
+	samp <- qlnorm(q, sdlog=sdlog)
+	return(samp*mean/mean(samp))
+}
+
+lnquantiles2 <- function(median, disp, nQuant=1000) {
+	q <- (2*(1:nQuant)-1)/(2*nQuant)
+	samp <- qlnorm(q, meanlog=log(median), sdlog=log(disp))
+	return(samp)
+}
+
+gammaquantiles <- function(mean, shape, nQuant=1000) {
+	q <- (2*(1:nQuant)-1)/(2*nQuant)
+	samp <- qgamma(q, shape=shape)
+	return(samp*mean/mean(samp))
 }
 
 ## Take a weighted sample from a list of functional periods
