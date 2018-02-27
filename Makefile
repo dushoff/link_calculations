@@ -46,11 +46,17 @@ rabies_fig.Rout: rabies_fig.R
 rabies_sample.pdf rabies.pdf: rabies_fig.Rout ;
 Ignore += rabies.pdf rabies_sample.pdf
 
+measles_fig.R: colors.R euler.R quantile.R functions.R
+measles_fig.Rout: measles_fig.R
+measles.pdf: measles_fig.Rout ;
+
+## X figure
 genExp.R: euler.R
 genExp.Rout: genExp.R
 genExp.pdf: genExp.Rout ;
 Ignore += genExp.pdf
 
+## Steps figure
 steps_fig.Rout: steps_fig.R
 steps.pdf: steps_fig.Rout ;
 Ignore += steps.pdf
