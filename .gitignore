@@ -7,8 +7,11 @@ make.log
 
 ## content from makestuff
 rdata_2002_2007.csv
+ebola_sample.pdf
+ebola_normal.pdf
 ebola.pdf
 rabies.pdf
+rabies_sample.pdf
 genExp.pdf
 steps.pdf
 up.time
@@ -29,8 +32,11 @@ clonedir/
 *.Rout*
 *.wrapR.*
 rdata_2002_2007.csv
+ebola_sample.pdf
+ebola_normal.pdf
 ebola.pdf
 rabies.pdf
+rabies_sample.pdf
 genExp.pdf
 steps.pdf
 up.time
