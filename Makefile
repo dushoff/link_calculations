@@ -66,14 +66,24 @@ Ignore += steps.pdf
 
 ## JD style (same code, mostly?)
 
+#### Ebola 
+
 ## Parameters and basic calculations
 ebola_calc.Rout: quantile.Rout ebola_calc.R
 
 ## Look at the numbers for Weitz
-ebola_comp.Rout: ebola_calc.Rout euler.Rout ebola_comp.R
+ebola_comp.Rout: ebola_calc.Rout euler.Rout rcomp.R ebola_comp.R
+	$(run-R)
 
 ## Main approximation curve
 ebola_curve.Rout: colors.Rout euler.Rout ebola_calc.Rout ebola_curve.R
+
+#### Measles
+
+measles_calc.Rout: euler.Rout quantile.Rout functions.Rout measles_calc.R
+
+measles_comp.Rout: measles_calc.Rout rcomp.R 
+	$(run-R)
 
 ######################################################################
 
@@ -82,4 +92,5 @@ include makestuff.mk
 -include $(ms)/visual.mk
 
 -include $(ms)/wrapR.mk
+-include $(ms)/masterR.mk
 # -include $(ms)/texdeps.mk

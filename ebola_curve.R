@@ -1,4 +1,3 @@
-library(bbmle)
 library(tidyr)
 library(dplyr)
 

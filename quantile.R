@@ -4,6 +4,7 @@ lnquantiles <- function(mean, sdlog, nQuant=1000){
 	return(samp*mean/mean(samp))
 }
 
+## Based on median and "dispersion" (=exp(sdlog))
 lnquantiles2 <- function(median, disp, nQuant=1000) {
 	q <- (2*(1:nQuant)-1)/(2*nQuant)
 	samp <- qlnorm(q, meanlog=log(median), sdlog=log(disp))
