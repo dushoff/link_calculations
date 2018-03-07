@@ -86,6 +86,7 @@ measles_comp.Rout: measles_calc.Rout rcomp.R
 	$(run-R)
 
 all.Rout: measles_comp.Rout ebola_comp.Rout
+	$(run-R)
 
 ######################################################################
 
