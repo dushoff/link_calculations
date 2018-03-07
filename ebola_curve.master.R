@@ -1,0 +1,5 @@
+source("colors.run.r")
+source("euler.run.r")
+source("quantile.run.r")
+source("ebola_calc.run.r")
+source("ebola_curve.run.r")

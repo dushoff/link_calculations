@@ -87,6 +87,8 @@ measles_comp.Rout: measles_calc.Rout rcomp.R
 
 ######################################################################
 
+Sources += $(wildcard *.run.r)
+
 include makestuff.mk
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
