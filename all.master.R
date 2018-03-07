@@ -1,0 +1,7 @@
+source("euler.run.r")
+source("quantile.run.r")
+source("functions.run.r")
+source("measles_calc.run.r")
+source("measles_comp.run.r")
+source("ebola_calc.run.r")
+source("ebola_comp.run.r")
