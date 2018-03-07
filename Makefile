@@ -64,6 +64,19 @@ Ignore += steps.pdf
 
 ######################################################################
 
+## JD style (same code, mostly?)
+
+## Parameters and basic calculations
+ebola_calc.Rout: quantile.Rout ebola_calc.R
+
+## Look at the numbers for Weitz
+ebola_comp.Rout: ebola_calc.Rout euler.Rout ebola_comp.R
+
+## Main approximation curve
+ebola_curve.Rout: colors.Rout euler.Rout ebola_calc.Rout ebola_curve.R
+
+######################################################################
+
 include makestuff.mk
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
