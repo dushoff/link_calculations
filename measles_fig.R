@@ -1,9 +1,9 @@
 ## Points corresponding to ??? estimates
-Reff <- 14
+Reff <- c(12.5, 18)
 
 latmedian <- 12.5 ## cummings et al
 latdisp <- 1.23 ## dispersion 
-infmean <- 3.65
+infmean <- 6.5
 infshape <- 5
 numSamps <- 10000
 
@@ -12,7 +12,7 @@ source("euler.R")
 source("quantile.R")
 source("functions.R")
 
-xmax <- 3
+xmax <- 3.3
 ymax <- exp(xmax)
 
 lat <- lnquantiles2(median=12.5, disp=latdisp, numSamps)
@@ -24,7 +24,7 @@ rho_eff <- findrho(gen, Reff)
 
 ## draw r-R curve
 pdf("measles.pdf", width=6, heigh=4) 
-GenCurve(gen, xmax, ymax, rho_eff, Reff, lwd=2)
+GenCurve(gen, xmax, ymax, NA, NA, lwd=2)
 legend(
 	"topleft"
 	, legend=c("empirical", "moment")
@@ -33,4 +33,5 @@ legend(
 	, seg.len=4
 	, col=c("black", momcolor)
 )
+abline(h=Reff, col="gray")
 dev.off()

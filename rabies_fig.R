@@ -11,7 +11,7 @@ source("mle.R")
 source("colors.R")
 
 ## Points corresponding to Hampson et al. 2009
-Reff <- c(1.06, 1.32)
+Reff <- c(1.05, 1.32)
 
 rdata <- read.csv("rdata_2002_2007.csv")
 lat <- with(rdata, {data.frame(
@@ -49,7 +49,7 @@ mle <- gammaMLE(gen)
 ## draw r-R curve
 pdf("rabies.pdf", width=8, height=6) 
 par(mfrow=c(1,2))
-GenCurve(gen, xmax, ymax, rho_eff, Reff, lwd=2)
+GenCurve(gen, xmax, ymax, NA, NA, lwd=2)
 curve(GammaCurve(1/mle[1], x), add=TRUE, lwd=2, col=mlecolor, lty=2)
 legend(
 	"topleft"
@@ -59,6 +59,7 @@ legend(
 	, seg.len=4
 	, col=c("black", momcolor, mlecolor)
 )
+abline(h=Reff, col="gray")
 
 hist(gen
 	, freq=FALSE
