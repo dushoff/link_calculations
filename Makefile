@@ -85,6 +85,9 @@ measles_calc.Rout: euler.Rout quantile.Rout functions.Rout measles_calc.R
 measles_comp.Rout: measles_calc.Rout rcomp.R 
 	$(run-R)
 
+
+#### all
+
 all.Rout: measles_comp.Rout ebola_comp.Rout
 	$(run-R)
 
