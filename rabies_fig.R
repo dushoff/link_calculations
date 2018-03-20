@@ -41,7 +41,7 @@ inf <- inf$val[!is.na(inf$val)]
 lat <- lat$val[!is.na(lat$val)]
 
 set.seed(101)
-gen <- genSamp(lat, inf, nsamp=length(lat))
+gen <- genSamp(lat, inf, nsamp=10000)
 
 rho_eff <- findrho(gen, Reff)
 mle <- gammaMLE(gen)
