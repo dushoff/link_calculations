@@ -4,7 +4,7 @@ Reff <- c(1.81, 1.51, 1.38)
 doub <- c(15.7, 23.6, 30.2)
 
 latmean <- 11.4
-latshape <- (11.4/8.1)^2
+latshape <- 1.75
 infmean <- 5
 infshape <- (5/4.7)^2
 numSamps <- 10000
