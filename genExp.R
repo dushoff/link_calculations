@@ -2,7 +2,7 @@ source("euler.R")
 
 rho <- seq(0, 3, length.out=101)
 
-pdf("genExp.pdf", width=8, heigh=6)
+pdf("genExp.pdf", width=6, heigh=4)
 plot(
 	NA
 	, xlim=c(0, max(rho))
