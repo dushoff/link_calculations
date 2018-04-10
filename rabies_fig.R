@@ -49,13 +49,13 @@ mle <- gammaMLE(gen)
 ## draw r-R curve
 pdf("rabies.pdf", width=8, height=6) 
 par(mfrow=c(1,2))
-GenCurve(gen, xmax, ymax, NA, NA, lwd=2)
-curve(GammaCurve(1/mle[1], x), add=TRUE, lwd=2, col=mlecolor, lty=2)
+GenCurve(gen, xmax, ymax, NA, NA, lwd=3)
+curve(GammaCurve(1/mle[1], x), add=TRUE, lwd=3, col=mlecolor, lty=2)
 legend(
 	"topleft"
 	, legend=c("empirical", "moment", "MLE")
 	, lty=c(1, 2, 2)
-	, lwd=2
+	, lwd=3
 	, seg.len=4
 	, col=c("black", momcolor, mlecolor)
 )
@@ -73,13 +73,14 @@ curve(dgamma(x, shape=mean(gen)^2/var(gen), scale=var(gen)/mean(gen))
 	, add=TRUE
 	, col=momcolor
 	, lty=2
-	, lwd=2
+	, lwd=3
+	, xlim=c(1, 250)
 )
 curve(dgamma(x, shape=mle[1], scale=mle[2])
 	, add=TRUE
 	, col=mlecolor
 	, lty=2
-	, lwd=2
+	, lwd=3
 )
 dev.off()
 

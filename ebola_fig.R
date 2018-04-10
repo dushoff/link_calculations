@@ -105,11 +105,11 @@ ggebola <- (
 	+ facet_grid(~n)
 	+ theme(
 		legend.title = element_blank(),
-		legend.position = c(0.05, 0.85),
+		legend.position = c(0.1, 0.8),
 		panel.grid = element_blank(),
 		strip.background = element_blank(),
 		panel.spacing = unit(0, "cm")
 	)
 )
 
-ggsave("ebola_sample.pdf", ggebola, width=12, height=4)
+ggsave("ebola_sample.pdf", ggebola, width=6, height=3)
