@@ -49,7 +49,7 @@ NormalCurve(gen, xmax, ymax, rho_eff, Reff, lwd=2)
 legend(
 	"topleft"
 	, legend=c("empirical", "moment", "normal")
-	, lty=c(1, 1, 2)
+	, lty=c(1, 2, 2)
 	, lwd=2
 	, seg.len=4
 	, col=c("black", momcolor, norcolor)
