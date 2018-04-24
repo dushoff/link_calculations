@@ -6,6 +6,10 @@ Sources = Makefile .gitignore .ignore README.md makestuff.mk LICENSE.md
 
 # -include $(ms)/perl.def
 
+######################################################################
+
+paper_figures: steps.pdf genExp.pdf ebola.pdf measles.pdf rabies.pdf
+
 ##################################################################
 
 ## Content
