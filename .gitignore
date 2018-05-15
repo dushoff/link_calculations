@@ -29,7 +29,6 @@ clonedir/
 *.wide.pdf
 *.RData
 *.Rlog
-*.r
 .Rhistory
 *.Rout*
 *.wrapR.*
@@ -57,7 +56,6 @@ clonedir/
 *.wide.pdf
 *.RData
 *.Rlog
-*.r
 .Rhistory
 *.Rout*
 *.wrapR.*
