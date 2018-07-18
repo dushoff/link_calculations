@@ -42,8 +42,11 @@ appendix.out
 *.run.xml
 bibdir
 auto.bib
+nish.bib
 auto.md
+nish.md
 auto.html
+nish.html
 *.bibmk
 *.point
 *.int
