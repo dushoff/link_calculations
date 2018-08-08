@@ -10,6 +10,7 @@ abstract.txt
 pages
 park_main.pdf
 park_supp_text.pdf
+compare.tex
 refs.bib
 auto.html
 commit.time
@@ -22,15 +23,13 @@ all.time
 *.oldfile
 *.olddiff
 .texdeps/
-interval.pdf
-compare.pdf
-appwrap.pdf
 table.pdf
+appwrap.pdf
+interval.pdf
 appendix.pdf
-interval.out
-compare.out
-appwrap.out
 table.out
+appwrap.out
+interval.out
 appendix.out
 *.log
 *.aux
