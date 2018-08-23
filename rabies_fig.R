@@ -13,16 +13,7 @@ source("colors.R")
 ## Points corresponding to Hampson et al. 2009
 Reff <- c(1.05, 1.32)
 
-rdata <- read.csv("rdata_2002_2007.csv")
-lat <- with(rdata, {data.frame(
-	num=Incubation.period
-	, units = Incubation.period.units
-)})
-
-inf <- with(rdata, {data.frame(
-	num=Infectious.period
-	, units = Infectious.period.units
-)})
+load("rabies_data.rda")
 
 inf <- ufun(inf)
 inf$val <- inf$num*inf$uval
