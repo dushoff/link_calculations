@@ -6,6 +6,10 @@ Sources = Makefile .gitignore .ignore README.md makestuff.mk LICENSE.md
 
 # -include $(ms)/perl.def
 
+######################################################################
+
+paper_figures: steps.pdf genExp.pdf ebola.pdf measles.pdf rabies.pdf
+
 ##################################################################
 
 ## Content
@@ -35,7 +39,7 @@ rdata_2002_2007.csv:
 colors.Rout: colors.R
 
 ## Daniel-style sourcing (fake step rules)
-ebola_fig.R: colors.R euler.R quantile.R mle.R
+EBOLA_FIG.r: COLORs.R euler.R quantile.R mle.R
 ebola_fig.Rout: ebola_fig.R
 ebola_sample.pdf ebola_normal.pdf ebola.pdf: ebola_fig.Rout ;
 Ignore += ebola_sample.pdf ebola_normal.pdf ebola.pdf
