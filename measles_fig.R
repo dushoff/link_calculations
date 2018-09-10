@@ -33,5 +33,5 @@ legend(
 	, seg.len=2.5
 	, col=c("black", momcolor)
 )
-abline(h=Reff, col="gray")
+abline(h=Reff, col="gray", lwd=2)
 dev.off()
