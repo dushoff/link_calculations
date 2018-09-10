@@ -1,8 +1,7 @@
 library(bbmle)
 library(dplyr)
 library(tidyr)
-library(ggplot2)
-theme_set(theme_bw())
+library(ggplot2); theme_set(theme_bw())
 
 source("euler.R")
 source("quantile.R")
@@ -11,7 +10,7 @@ source("mle.R")
 source("colors.R")
 
 ## Points corresponding to Hampson et al. 2009
-Reff <- c(1.05, 1.32)
+Reff <- c(1.14, 1.19)
 
 load("rabies_data.rda")
 
@@ -25,7 +24,7 @@ lat$val <- lat$num*lat$uval
 mean(lat$val, na.rm = TRUE)
 sd(lat$val, na.rm = TRUE)
 
-xmax <- 1.5
+xmax <- 1
 ymax <- exp(xmax)
 
 inf <- inf$val[!is.na(inf$val)]
@@ -34,24 +33,27 @@ lat <- lat$val[!is.na(lat$val)]
 set.seed(101)
 gen <- genSamp(lat, inf, nsamp=10000)
 
-rho_eff <- findrho(gen, Reff)
+r <- c(0.167, 0.192)/30
+rho_eff <- mean(gen) * r
+
 mle <- gammaMLE(gen)
 
 ## draw r-R curve
-pdf("rabies.pdf", width=8, height=6) 
-par(mfrow=c(1,2))
-GenCurve(gen, xmax, ymax, NA, NA, lwd=3)
+pdf("rabies.pdf", width=6, height=8) 
+par(mfrow=c(2, 1))
+GenCurve(gen, xmax, ymax, NA, NA, lwd=3, lwd2=4)
 curve(GammaCurve(1/mle[1], x), add=TRUE, lwd=3, col=mlecolor, lty=2)
+points(rho_eff, Reff, cex=2, pch=c(19, 17))
+text(0.06, 1.27, "Ngorongoro")
+text(0.17, 1.38, "Serengeti")
 legend(
 	"topleft"
-	, legend=c("empirical", "moment", "MLE")
+	, legend=c("empirical", "approximation theory (moment)", "approximation theory (MLE)")
 	, lty=c(1, 2, 2)
-	, lwd=3
-	, seg.len=4
+	, lwd=c(4, 3, 3)
+	, seg.len=2.5
 	, col=c("black", momcolor, mlecolor)
 )
-abline(h=Reff, col="gray")
-
 hist(gen
 	, freq=FALSE
 	, breaks=30

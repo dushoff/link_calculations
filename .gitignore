@@ -161,3 +161,6 @@ all.time
 *.Rout*
 *.wrapR.*
 *.master.mk
+
+## from SWP
+monthlyTSdogs.csv

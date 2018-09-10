@@ -32,26 +32,33 @@ rho_eff <- Ghat*log(2)/doub
 
 ## draw r-R curve
 pdf("ebola.pdf", width=6, heigh=4) 
-GenCurve(gen, xmax, ymax, rho_eff, Reff, lwd=2)
+GenCurve(gen, xmax, ymax, rho_eff, Reff, lwd=3, lwd2=4)
+text(0.15, 1.68, "Sierra Leone")
+text(0.45, 1.95, "Liberia")
+text(0.65, 2.3, "Guinea")
 legend(
 	"topleft"
-	, legend=c("empirical", "moment")
+	, legend=c("empirical", "approximation theory (moment)")
 	, lty=c(1, 2)
-	, lwd=2
-	, seg.len=4
+	, lwd=c(4, 3)
+	, seg.len=2.5
 	, col=c("black", momcolor)
 )
 dev.off()
 
 ## normal approx
 pdf("ebola_normal.pdf", width=6, heigh=4) 
-NormalCurve(gen, xmax, ymax, rho_eff, Reff, lwd=2)
+NormalCurve(gen, xmax, ymax, NA, NA, lwd=3, lwd2=4)
+points(rho_eff, Reff, pch=c(19, 17, 15), cex=1.5)
+text(0.15, 1.68, "Sierra Leone")
+text(0.45, 1.95, "Liberia")
+text(0.65, 2.3, "Guinea")
 legend(
 	"topleft"
-	, legend=c("empirical", "moment", "normal")
+	, legend=c("empirical", "approximation theory (moment)", "normal")
 	, lty=c(1, 2, 2)
-	, lwd=2
-	, seg.len=4
+	, lwd=c(4, 3, 3)
+	, seg.len=2.5
 	, col=c("black", momcolor, norcolor)
 )
 dev.off()
@@ -88,18 +95,19 @@ samp_df <- samp_list %>%
 		mean=mean(value)
 	) %>%
 	group_by %>%
-	mutate(key=factor(key, levels=c("moment", "mle")))
+	mutate(key=factor(key, levels=c("moment", "mle"),
+					  labels=c("moment", "MLE")))
 
 ggebola <- (
 	ggplot(samp_df, aes(x=rho))
 	+ stat_function(fun=function(x) EulerCurve(mean(gen)/x, gen), col="black", lty=1, lwd=1)
 	+ stat_function(fun=exp, col=limcolor, lty=3, lwd=1)
 	+ stat_function(fun=function(x) x+1, col=limcolor, lty=3, lwd=1)
-	+ geom_ribbon(aes(ymin=lwr, ymax=upr, group=key, col=key, fill=key), alpha=0.2, lwd=0.5, lty=1)
+	+ geom_ribbon(aes(ymin=lwr, ymax=upr, group=key, col=key, fill=key), alpha=0.4, lwd=0.5, lty=1)
 	+ geom_line(aes(y=mean, group=key, col=key), lwd=1, lty=2)
 	+ scale_color_manual(values=c(momcolor, mlecolor))
 	+ scale_fill_manual(values=c(momcolor, mlecolor))
-	+ geom_point(data=data.frame(rho=rho_eff, R=Reff), aes(y=R), pch=c(19, 17, 15, 19, 17, 15, 19, 17, 15), size=2)
+	+ geom_point(data=data.frame(rho=rho_eff, R=Reff), aes(y=R), pch=c(19, 17, 15, 19, 17, 15, 19, 17, 15), size=2.5)
 	+ scale_x_continuous(expression(Relative~length~of~generation~interval~(rho)), expand=c(0,0), breaks=c(0, 0.5, 1, 1.5))
 	+ scale_y_continuous("Reproductive number") 
 	+ facet_grid(~n)

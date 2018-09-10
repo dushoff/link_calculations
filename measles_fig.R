@@ -24,13 +24,13 @@ rho_eff <- findrho(gen, Reff)
 
 ## draw r-R curve
 pdf("measles.pdf", width=6, heigh=4) 
-GenCurve(gen, xmax, ymax, NA, NA, lwd=2)
+GenCurve(gen, xmax, ymax, NA, NA, lwd=3, lwd2=5)
 legend(
 	"topleft"
-	, legend=c("empirical", "moment")
+	, legend=c("empirical", "approximation theory (moment)")
 	, lty=c(1, 2)
-	, lwd=2
-	, seg.len=4
+	, lwd=c(5, 3)
+	, seg.len=2.5
 	, col=c("black", momcolor)
 )
 abline(h=Reff, col="gray")
