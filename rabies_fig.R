@@ -39,8 +39,9 @@ rho_eff <- mean(gen) * r
 mle <- gammaMLE(gen)
 
 ## draw r-R curve
-pdf("rabies.pdf", width=6, height=6) 
-par(mfrow=c(2, 1), mar=c(2, 4, 2, 2) + 0.1)
+pdf("rabies.pdf", width=6, height=4) 
+layout(matrix(c(1,1,2), nrow = 1, byrow = TRUE))
+par(mar=c(5, 4, 4, 1) + 0.1)
 GenCurve(gen, xmax, ymax, NA, NA, lwd=3, lwd2=4)
 curve(GammaCurve(1/mle[1], x), add=TRUE, lwd=3, col=mlecolor, lty=2)
 points(rho_eff, Reff, cex=2, pch=c(19, 17))
@@ -54,6 +55,7 @@ legend(
 	, seg.len=2.5
 	, col=c("black", momcolor, mlecolor)
 )
+par(mar=c(5, 1, 4, 2) + 0.1)
 hist(gen
 	, freq=FALSE
 	, breaks=30
