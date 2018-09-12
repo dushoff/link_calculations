@@ -33,8 +33,7 @@ lat <- lat$val[!is.na(lat$val)]
 set.seed(101)
 gen <- genSamp(lat, inf, nsamp=10000)
 
-r <- c(0.167, 0.192)/30
-rho_eff <- mean(gen) * r
+rho_eff <- findrho(gen, Reff)
 
 mle <- gammaMLE(gen)
 
