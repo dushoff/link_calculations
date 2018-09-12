@@ -26,15 +26,15 @@ all.time
 .texdeps/
 letter.pdf
 compare.pdf
-macltr.pdf
 table.pdf
+macltr.pdf
 appwrap.pdf
 interval.pdf
 appendix.pdf
 letter.out
 compare.out
-macltr.out
 table.out
+macltr.out
 appwrap.out
 interval.out
 appendix.out
@@ -84,4 +84,5 @@ all.time
 .Rhistory
 *.Rout*
 *.wrapR.*
+*.Rds
 *.master.mk
