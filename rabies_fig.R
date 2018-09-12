@@ -52,7 +52,7 @@ legend(
 	, legend=c("empirical", "approximation theory (moment)", "approximation theory (MLE)")
 	, lty=c(1, 2, 2)
 	, lwd=c(4, 3, 3)
-	, seg.len=2.5
+	, seg.len=2.6
 	, col=c("black", momcolor, mlecolor)
 )
 par(mar=c(5, 1, 4, 2) + 0.1)
