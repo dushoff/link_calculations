@@ -43,7 +43,6 @@ rabies_report
 rabies_R0
 rabies_correlations
 rdc
-mc_recency
 MMED
 MMEDparticipants
 ICI3D.github.io
@@ -68,23 +67,45 @@ commit.time
 commit.default
 dotdir/
 clonedir/
+creation
+Sandbox
+Workshops
+diversity_metrics
 Planning
+significance
+Generation_talks
 disease_model_talks
 statistics_talks
 generation_links
 notebook
+scratch
 1M
+New_CV
 Correspondence
 ml_medicine
-HIV_treatment_Africa
+shims_age_mixing
+competenceFramework
 WDBC-Codes
+rabies_db_pipeline
+rabies_report
+rabies_R0
+rabies_correlations
 rdc
+<<<<<<< HEAD
 mc_recency
+=======
+MMED
+MMEDparticipants
+>>>>>>> 5c0d448c0cbef79af2667d82c38d542f07342046
 coreFaculty
 plague
 fgc
 cannabis
+Lab_meeting
 smb-mathepi
+networkSEIR
+contact_trace
+bayes_antigen
 alberta_age
 up.time
 all.time
@@ -110,6 +131,10 @@ all.time
 *.olddiff
 .texdeps/
 letter.pdf
+<<<<<<< HEAD
+=======
+compare.pdf
+>>>>>>> 5c0d448c0cbef79af2667d82c38d542f07342046
 appwrap.pdf
 epiResponse.pdf
 appendix.pdf
@@ -117,6 +142,10 @@ table.pdf
 macltr.pdf
 interval.pdf
 letter.out
+<<<<<<< HEAD
+=======
+compare.out
+>>>>>>> 5c0d448c0cbef79af2667d82c38d542f07342046
 appwrap.out
 epiResponse.out
 appendix.out
