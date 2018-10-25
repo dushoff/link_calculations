@@ -50,7 +50,7 @@ ebola_gamma.pdf: ebola_gamma.Rout
 Ignore += ebola_gamma.pdf
 
 rabies_fig.R: colors.R euler.R quantile.R functions.R mle.R
-rabies_fig.R: rdata_2002_2007.csv
+rabies_fig.R: rabies_data.rda
 rabies_fig.Rout: rabies_fig.R
 rabies_sample.pdf rabies.pdf: rabies_fig.Rout ;
 Ignore += rabies.pdf rabies_sample.pdf
