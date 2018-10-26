@@ -12,7 +12,8 @@ source("colors.R")
 ## Points corresponding to Hampson et al. 2009
 Reff <- c(1.14, 1.19)
 
-load("rabies_data.rda")
+inf <- read.csv("rabies_inf.csv")
+lat <- read.csv("rabies_lat.csv")
 
 inf <- ufun(inf)
 inf$val <- inf$num*inf$uval
