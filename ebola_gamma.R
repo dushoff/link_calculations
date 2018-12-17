@@ -25,13 +25,9 @@ rho_eff <- Ghat*log(2)/doub
 
 ## draw r-R curve
 pdf("ebola_gamma.pdf", width=6, heigh=4) 
-GenCurve(gen, xmax, ymax, rho_eff, Reff, lwd=2)
-legend(
-	"topleft"
-	, legend=c("empirical", "moment")
-	, lty=c(1, 2)
-	, lwd=2
-	, seg.len=4
-	, col=c("black", momcolor)
-)
+GenCurve_DC(gen, xmax, ymax, rho_eff, Reff,
+			legend.position=c(0.285, 0.9),
+			labels=c("Guinea", 
+					 "Liberia", 
+					 "Sierra Leone"))
 dev.off()

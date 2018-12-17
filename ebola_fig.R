@@ -32,35 +32,32 @@ rho_eff <- Ghat*log(2)/doub
 
 ## draw r-R curve
 pdf("ebola.pdf", width=6, heigh=4) 
-GenCurve(gen, xmax, ymax, rho_eff, Reff, lwd=3, lwd2=4)
-text(0.15, 1.68, "Sierra Leone")
-text(0.45, 1.95, "Liberia")
-text(0.65, 2.3, "Guinea")
-legend(
-	"topleft"
-	, legend=c("empirical", "approximation theory (moment)")
-	, lty=c(1, 2)
-	, lwd=c(4, 3)
-	, seg.len=2.5
-	, col=c("black", momcolor)
-)
+g <- GenCurve_DC(gen, xmax, ymax, rho_eff, Reff,
+			legend.position=c(0.285, 0.9),
+			labels=c("Guinea", 
+			  "Liberia", 
+			  "Sierra Leone"))
 dev.off()
+
+q <- (2*(1:numSamps)-1)/(2*numSamps)
+normgen <- qnorm(q, mean = mean(gen), sd = sd(gen))
+normdf <- rbind(g$data, data_frame(
+	x=seq(0, xmax, by=0.1),
+	gitype="normal approximation",
+	value=EulerCurve(mean(gen)/x, normgen)
+)) %>%
+	mutate(gitype=factor(gitype, levels=c("empirical", "approximation theory (moment)",
+										  "normal approximation")))
 
 ## normal approx
 pdf("ebola_normal.pdf", width=6, heigh=4) 
-NormalCurve(gen, xmax, ymax, NA, NA, lwd=3, lwd2=4)
-points(rho_eff, Reff, pch=c(19, 17, 15), cex=1.5)
-text(0.15, 1.68, "Sierra Leone")
-text(0.45, 1.95, "Liberia")
-text(0.65, 2.3, "Guinea")
-legend(
-	"topleft"
-	, legend=c("empirical", "approximation theory (moment)", "normal")
-	, lty=c(1, 2, 2)
-	, lwd=c(4, 3, 3)
-	, seg.len=2.5
-	, col=c("black", momcolor, norcolor)
-)
+g %+% normdf +
+	scale_color_manual(values=c(rgb(0,0,0,0.3), "black", norcolor)) +
+	scale_linetype_manual(values=c(1, 1, 2)) +
+	scale_size_manual(values=c(4, 1.5, 1.5)) +
+	theme(
+		legend.position = c(0.285, 0.864)
+	)
 dev.off()
 
 nsamp <- c(10, 50, 100)
@@ -100,23 +97,23 @@ samp_df <- samp_list %>%
 
 ggebola <- (
 	ggplot(samp_df, aes(x=rho))
-	+ stat_function(fun=function(x) EulerCurve(mean(gen)/x, gen), col="black", lty=1, lwd=1)
 	+ stat_function(fun=exp, col=limcolor, lty=3, lwd=1)
 	+ stat_function(fun=function(x) x+1, col=limcolor, lty=3, lwd=1)
-	+ geom_ribbon(aes(ymin=lwr, ymax=upr, group=key, col=key, fill=key), alpha=0.4, lwd=0.5, lty=1)
-	+ geom_line(aes(y=mean, group=key, col=key), lwd=1, lty=2)
+	+ geom_ribbon(aes(ymin=lwr, ymax=upr, col=key, group=key, fill=key), alpha=0.4, lwd=0.5, lty=1)
+	+ geom_line(aes(y=mean, group=key, col=key), lwd=1.5, lty=2)
+	+ geom_line(data=filter(g$data, gitype=="empirical"), aes(x, value), lwd=3, col=rgb(0,0,0,0.3))
 	+ scale_color_manual(values=c(momcolor, mlecolor))
 	+ scale_fill_manual(values=c(momcolor, mlecolor))
-	+ geom_point(data=data.frame(rho=rho_eff, R=Reff), aes(y=R), pch=c(19, 17, 15, 19, 17, 15, 19, 17, 15), size=2.5)
 	+ scale_x_continuous(expression(Relative~length~of~generation~interval~(rho)), expand=c(0,0), breaks=c(0, 0.5, 1, 1.5))
 	+ scale_y_continuous("Reproductive number") 
 	+ facet_grid(~n)
 	+ theme(
 		legend.title = element_blank(),
-		legend.position = c(0.1, 0.8),
+		legend.position = c(0.115, 0.83),
 		panel.grid = element_blank(),
 		strip.background = element_blank(),
-		panel.spacing = unit(0, "cm")
+		panel.spacing = unit(0, "cm"),
+		legend.key.width = unit(3, "line")
 	)
 )
 

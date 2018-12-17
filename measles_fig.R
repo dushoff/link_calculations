@@ -22,16 +22,15 @@ gen <- genSamp(lat, inf, nsamp=numSamps)
 
 rho_eff <- findrho(gen, Reff)
 
+g <- GenCurve_DC(gen, xmax, ymax, rho_eff, Reff,
+				 legend.position=c(0.29, 0.9))
+
 ## draw r-R curve
 pdf("measles.pdf", width=6, heigh=4) 
-GenCurve(gen, xmax, ymax, NA, NA, lwd=3, lwd2=5)
-legend(
-	"topleft"
-	, legend=c("empirical", "approximation theory (moment)")
-	, lty=c(1, 2)
-	, lwd=c(5, 3)
-	, seg.len=2.5
-	, col=c("black", momcolor)
-)
-abline(h=Reff, col="gray", lwd=2)
+	g + annotate("text", x=1.35, y=(12.5+18)/2, label=c("Biologically realistic range (12.5 \u2013 18)"))+
+		geom_point(data=data.frame(x=rho_eff, y=Reff), aes(x, y), pch=21, fill='white',
+			   size=3, stroke=2) +
+		annotate("segment", x=2.3, y=Reff[1], xend=2.3, yend=Reff[2], arrow=arrow(length=unit(0.1, "inches"))) +
+		annotate("segment", x=2.3, y=Reff[2], xend=2.3, yend=Reff[1], arrow=arrow(length=unit(0.1, "inches")))
 dev.off()
+	
