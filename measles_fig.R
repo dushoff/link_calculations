@@ -1,4 +1,9 @@
-## Points corresponding to ??? estimates
+library(tidyr)
+library(dplyr)
+
+library(ggplot2); theme_set(theme_bw())
+
+## Points corresponding to May and Anderson estimates
 Reff <- c(12.5, 18)
 
 latmedian <- 12.5 ## cummings et al

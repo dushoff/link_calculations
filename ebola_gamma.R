@@ -1,3 +1,8 @@
+library(tidyr)
+library(dplyr)
+
+library(ggplot2); theme_set(theme_bw())
+
 ## Points corresponding to WHO estimates
 Ghat <- 15.3
 Reff <- c(1.81, 1.51, 1.38)
