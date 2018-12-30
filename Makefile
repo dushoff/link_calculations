@@ -5,6 +5,12 @@ Sources = Makefile README.md LICENSE.md
 -include target.mk
 
 ms = makestuff
+Makefile: $(ms) $(ms)/Makefile
+
+$(ms)/%.mk: $(ms) $(ms)/Makefile ;
+$(ms)/Makefile:
+	git submodule update -i
+
 -include $(ms)/os.mk
 
 ######################################################################
