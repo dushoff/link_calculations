@@ -16,9 +16,12 @@ source("colors.R")
 source("euler.R")
 source("quantile.R")
 source("functions.R")
+source("rcomp.R")
 
 xmax <- 3.3
 ymax <- exp(xmax)
+
+set.seed(101)
 
 lat <- lnquantiles2(median=12.5, disp=latdisp, numSamps)
 inf <- gammaquantiles(mean=infmean, shape=infshape, numSamps)
@@ -26,6 +29,8 @@ inf <- gammaquantiles(mean=infmean, shape=infshape, numSamps)
 gen <- genSamp(lat, inf, nsamp=numSamps)
 
 rho_eff <- findrho(gen, Reff)
+
+rcomp(gen, xmax)
 
 g <- GenCurve_DC(gen, xmax, ymax, rho_eff, Reff,
 				 legend.position=c(0.29, 0.9))

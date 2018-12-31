@@ -19,16 +19,20 @@ source("colors.R")
 source("euler.R")
 source("quantile.R")
 source("mle.R")
+source("rcomp.R")
 
 xmax <- 2
 ymax <- 5
 
+set.seed(101)
 lat <- lnquantiles(mean=latmean, sdlog=latshape, numSamps)
 inf <- lnquantiles(mean=infmean, sdlog=infshape, numSamps)
 
 gen <- genSamp(lat, inf, nsamp=numSamps)
 
 rho_eff <- Ghat*log(2)/doub
+
+rcomp(gen, xmax)
 
 ## draw r-R curve
 pdf("ebola.pdf", width=6, heigh=4) 
