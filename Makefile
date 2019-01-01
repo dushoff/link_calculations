@@ -7,11 +7,35 @@ Sources = Makefile README.md LICENSE.md
 ms = makestuff
 Makefile: $(ms) $(ms)/Makefile
 
-$(ms)/%.mk: $(ms) $(ms)/Makefile ;
+$(ms)/%.mk: $(ms)/Makefile ;
 $(ms)/Makefile:
 	git submodule update -i
 
 -include $(ms)/os.mk
+
+######################################################################
+
+figs = $(paper_figures) $(supp_figures)
+
+## make2graph
+
+# figs.mg.png:
+
+Ignore += rdeps.make
+rdeps.make: $(wildcard *.rdeps)
+	$(cat)
+
+Ignore += *.rdlog
+%.rdlog: rdeps.make
+	make -f $< -nd $($*) > $@
+
+Ignore += *.dot
+%.dot: %.rdlog
+	make2graph $< > $@
+
+Ignore += *.mg.png
+%.mg.png: %.dot
+	dot -Tpng -o $@ $< 
 
 ######################################################################
 
