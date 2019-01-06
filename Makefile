@@ -5,7 +5,8 @@ Sources = Makefile README.md LICENSE.md
 -include target.mk
 
 ms = makestuff
-Makefile: $(ms) $(ms)/Makefile
+Sources += $(ms)
+Makefile: $(ms)/Makefile
 
 $(ms)/%.mk: $(ms)/Makefile ;
 $(ms)/Makefile:
@@ -14,6 +15,9 @@ $(ms)/Makefile:
 -include $(ms)/os.mk
 
 ######################################################################
+
+Ignore += README.html
+README.html: README.md
 
 figs = $(paper_figures) $(supp_figures)
 
