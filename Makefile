@@ -50,5 +50,6 @@ allfigs.pdf: $(paper_figures) $(supp_figures)
 
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
+-include $(ms)/pandoc.mk
 
 -include $(ms)/stepR.mk
