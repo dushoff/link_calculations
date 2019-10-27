@@ -1,18 +1,13 @@
 
 ## link_calculations
 
-Sources = Makefile README.md LICENSE.md
+## This is link_calculations, a screens project directory
+
+current: target
 -include target.mk
 
-ms = makestuff
-Sources += $(ms)
-Makefile: $(ms)/Makefile
+# include makestuff/perl.def
 
-$(ms)/%.mk: $(ms)/Makefile ;
-$(ms)/Makefile:
-	git submodule update -i
-
--include $(ms)/os.mk
 
 ######################################################################
 
@@ -52,8 +47,27 @@ allfigs.pdf: $(paper_figures) $(supp_figures)
 
 ##################################################################
 
--include $(ms)/git.mk
--include $(ms)/visual.mk
--include $(ms)/pandoc.mk
+# Content
 
--include $(ms)/stepR.mk
+vim_session:
+	bash -cl "vmt"
+
+######################################################################
+
+### Makestuff
+
+Sources += Makefile
+
+Ignore += makestuff
+msrepo = https://github.com/dushoff
+Makefile: makestuff/Makefile
+makestuff/Makefile:
+	git clone $(msrepo)/makestuff
+	ls $@
+
+-include makestuff/os.mk
+-include makestuff/visual.mk
+-include makestuff/projdir.mk
+-include makestuff/pandoc.mk
+-include makestuff/stepR.mk
+-include makestuff/git.mk
