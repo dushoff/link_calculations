@@ -8,7 +8,6 @@ current: target
 
 # include makestuff/perl.def
 
-
 ######################################################################
 
 Ignore += README.html
@@ -51,6 +50,29 @@ allfigs.pdf: $(paper_figures) $(supp_figures)
 
 vim_session:
 	bash -cl "vmt"
+
+######################################################################
+
+## Post-hoc investigation of Daniel's work flow
+
+# colors.R play with color map (rgb)
+
+# Ebola figure calculations (repetitive code ☹)
+# ebola_fig.R
+# ebola_gamma.R
+
+## Other figures
+# measles_fig.R
+# rabies_fig.R
+# steps_fig.R
+# genExp.R  ## Makes the standard rR curves
+
+
+# euler.R ## Euler-Lotka calculations; plotting functions
+# functions.R ## A units function (for data parsing?) and findrho (finds the product rG, presumably)
+# mle.R ## A function to fit a gamma function
+# quantile.R ## Take a weighted sample from a list of functional periods
+# rcomp.R ## compare different calculations
 
 ######################################################################
 
